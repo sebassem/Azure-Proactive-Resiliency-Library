@@ -12,10 +12,10 @@ The presented resiliency recommendations in this guidance include {{ replace .Na
 ## Summary of Recommendations
 
 {{< table style="table-striped" >}}
-| Recommendation                                    |  Category                                                               |  Impact         |  State            | ARG Query Available |
-| :------------------------------------------------ | :---------------------------------------------------------------------: | :------:        | :------:          | :-----------------: |
-| [CM-1 - CHANGE ME title](#cm-1---change-me-title) | Compatibility/Compliance/Disaster Recovery/High Availability/Management | High/Medium/Low | Preview/Verified  |         Yes         |
-| [CM-2 - CHANGE ME title](#cm-2---change-me-title) | Monitoring/Networking/Performance/Scalability/Security/Storage          | High/Medium/Low | Preview/Verified  |         No          |
+| Recommendation                                    |                                Category                                 |     Impact      |      State       | ARG Query Available |
+|:--------------------------------------------------|:-----------------------------------------------------------------------:|:---------------:|:----------------:|:-------------------:|
+| [CM-1 - CHANGE ME title](#cm-1---change-me-title) | Compatibility/Compliance/Disaster Recovery/High Availability/Management | High/Medium/Low | Preview/Verified |         Yes         |
+| [CM-2 - CHANGE ME title](#cm-2---change-me-title) |     Monitoring/Networking/Performance/Scalability/Security/Storage      | High/Medium/Low | Preview/Verified |         No          |
 {{< /table >}}
 
 {{< alert style="info" >}}
@@ -41,7 +41,7 @@ FILL ME IN...
 - [CHANGE ME LINK](https://aka.ms)
 - [CHANGE ME LINK](https://aka.ms)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -66,7 +66,7 @@ FILL ME IN...
 - [CHANGE ME LINK](https://aka.ms)
 - [CHANGE ME LINK](https://aka.ms)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 

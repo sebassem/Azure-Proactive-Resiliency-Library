@@ -14,8 +14,8 @@ The presented resiliency recommendations in this guidance include Event Grid and
 {{< table style="table-striped" >}}
 | Recommendation                                    |  Category                                                               |  Impact         |  State   | ARG Query Available |
 | :------------------------------------------------ | :---------------------------------------------------------------------: | :------:        | :------: | :-----------------: |
-| [EVG-1 - Configure Diagnostic Settings for all Azure Resources](#evg-1---configure-diagnostic-settings-for-all-azure-resources) | Monitoring | Low | Preview  |         Yes         |
-| [EVG-2 - Configure Dead-letter to save events that cannot be delivered](#evg-2---configure-dead-letter-to-save-events-that-cannot-be-delivered) | Automation          | Low | Preview |         Yes          |
+| [EVG-1 - Configure Diagnostic Settings for all Azure Event Grid resources](#evg-1---configure-diagnostic-settings-for-all-azure-event-grid-resources) | Monitoring | Low | Preview  |         No        |
+| [EVG-2 - Configure Dead-letter to save events that cannot be delivered](#evg-2---configure-dead-letter-to-save-events-that-cannot-be-delivered) | Automation          | Low | Preview |         No          |
 | [EVG-3 - Configure Private Endpoints](#evg-3---configure-private-endpoints) | Access & Security          | Low | Preview |         Yes          |
 {{< /table >}}
 
@@ -27,7 +27,7 @@ Definitions of states can be found [here]({{< ref "../../../_index.md#definition
 
 ## Recommendations Details
 
-### EVG-1 - Configure Diagnostic Settings for all Azure Resources
+### EVG-1 - Configure Diagnostic Settings for all Azure Event Grid resources
 
 **Category: Monitoring**
 
@@ -41,11 +41,11 @@ Enabling diagnostic settings allow you to capture and view diagnostic informatio
 
 - [Azure Event Grid - Enable diagnostic logs for Event Grid resources](https://learn.microsoft.com/en-us/azure/event-grid/enable-diagnostic-logs-topic)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
-{{< code lang="sql" file="code/evg-1/evg-1.ps1" >}} {{< /code >}}
+{{< code lang="sql" file="code/evg-1/evg-1.kql" >}} {{< /code >}}
 
 {{< /collapse >}}
 
@@ -65,11 +65,11 @@ When Event Grid can't deliver an event within a certain time period or after try
 
 - [Azure Event Grid delivery and retry](https://learn.microsoft.com/en-us/azure/event-grid/delivery-and-retry#dead-letter-events)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
-{{< code lang="sql" file="code/evg-2/evg-2.ps1" >}} {{< /code >}}
+{{< code lang="sql" file="code/evg-2/evg-2.kql" >}} {{< /code >}}
 
 {{< /collapse >}}
 
@@ -89,7 +89,7 @@ You can use private endpoints to allow ingress of events directly from your virt
 
 - [Configure private endpoints for Azure Event Grid topics or domains](https://learn.microsoft.com/en-us/azure/event-grid/configure-private-endpoints)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 

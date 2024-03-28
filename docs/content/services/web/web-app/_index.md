@@ -12,14 +12,14 @@ The presented resiliency recommendations in this guidance include Web App and as
 ## Summary of Recommendations
 
 {{< table style="table-striped" >}}
-| Recommendation | Impact | State | ARG Query Available |
-| :------------------------------------------------ | :------: | :------: | :-----------------: |
-| [APP-1 - Enable diagnostics logging](#app-1---enable-diagnostics-logging) | High | Preview | No |
-| [APP-2 - Monitor performance](#app-2---monitor-performance) | Medium | Preview | No |
-| [APP-3 - Separate web apps from web APIs](#app-3---separate-web-apps-from-web-apis) | Low | Preview | No |
-| [APP-4 - Create a separate storage account for logs](#app-4---create-a-separate-storage-account-for-logs) | Medium | Preview | No |
-| [APP-5 - Deploy to a staging slot](#app-5---deploy-to-a-staging-slot) | Medium | Preview | YNoes |
-| [APP-6 - Store configuration as app settings](#app-6---store-configuration-as-app-settings) | Medium | Preview | No |
+| Recommendation                                                                                            |Category| Impact |  State  | ARG Query Available |
+|:----------------------------------------------------------------------------------------------------------|:-:|:------:|:-------:|:-------------------:|
+| [APP-1 - Enable diagnostics logging](#app-1---enable-diagnostics-logging)                                 |Monitoring|  Low   | Preview |         Yes         |
+| [APP-2 - Monitor performance](#app-2---monitor-performance)                                               |Monitoring| Medium | Preview |         Yes         |
+| [APP-3 - Separate web apps from web APIs](#app-3---separate-web-apps-from-web-apis)                       |System Efficiency|  Low   | Preview |         No          |
+| [APP-4 - Create a separate storage account for logs](#app-4---create-a-separate-storage-account-for-logs) |System Efficiency| Medium | Preview |         No          |
+| [APP-5 - Deploy to a staging slot](#app-5---deploy-to-a-staging-slot)                                     |Governance| Medium | Preview |         Yes         |
+| [APP-6 - Store configuration as app settings](#app-6---store-configuration-as-app-settings)               |Application Resilience| Medium | Preview |         Yes         |
 
 {{< /table >}}
 
@@ -33,7 +33,9 @@ Definitions of states can be found [here]({{< ref "../../../_index.md#definition
 
 ### App-1 - Enable diagnostics logging
 
-**Impact: High**
+**Category: Monitoring**
+
+**Impact: Low**
 
 **Guidance**
 
@@ -43,9 +45,17 @@ Enabling diagnostics logging for your Azure App Service is important for monitor
 
 - [Enable diagnostics logging for apps in Azure App Service](https://learn.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)
 
+{{< collapse title="Show/Hide Query/Script" >}}
+
+{{< code lang="sql" file="code/app-1/app-1.kql" >}} {{< /code >}}
+
+{{< /collapse >}}
+
 <br><br>
 
 ### App-2 - Monitor Performance
+
+**Category: Monitoring**
 
 **Impact: Medium**
 
@@ -60,7 +70,7 @@ Enable monitoring on your web applications based on ASP.NET, ASP.NET Core, Java,
 - [Application Insights](https://learn.microsoft.com/azure/application-insights/app-insights-overview)
 - [Application monitoring for Azure App Service](https://learn.microsoft.com/azure/azure-monitor/app/azure-web-apps)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -72,6 +82,8 @@ Enable monitoring on your web applications based on ASP.NET, ASP.NET Core, Java,
 
 ### App-3 - Separate web apps from web APIs
 
+**Category: System Efficiency**
+
 **Impact: Low**
 
 **Guidance**
@@ -82,9 +94,17 @@ If your solution has both a web front end and a web API, consider decomposing th
 
 - [Resiliency checklist for specific Azure services](https://learn.microsoft.com/azure/architecture/checklist/resiliency-per-service#app-service)
 
+{{< collapse title="Show/Hide Query/Script" >}}
+
+{{< code lang="sql" file="code/app-3/app-3.kql" >}} {{< /code >}}
+
+{{< /collapse >}}
+
 <br><br>
 
 ### App-4 - Create a separate storage account for logs
+
+**Category: System Efficiency**
 
 **Impact: Medium**
 
@@ -96,9 +116,17 @@ Create a separate storage account for logs. Don't use the same storage account f
 
 - [Resiliency checklist](https://learn.microsoft.com/azure/architecture/checklist/resiliency-per-service#app-service)
 
+{{< collapse title="Show/Hide Query/Script" >}}
+
+{{< code lang="sql" file="code/app-4/app-4.kql" >}} {{< /code >}}
+
+{{< /collapse >}}
+
 <br><br>
 
 ### App-5 - Deploy to a staging slot
+
+**Category: Governance**
 
 **Impact: Medium**
 
@@ -111,7 +139,7 @@ Consider creating a deployment slot to hold the last-known-good (LKG) deployment
 
 - [Set up staging environments in Azure App Service](https://learn.microsoft.com/azure/app-service-web/web-sites-staged-publishing)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -123,6 +151,8 @@ Consider creating a deployment slot to hold the last-known-good (LKG) deployment
 
 ### App-6 - Store configuration as app settings
 
+**Category: Application Resilience**
+
 **Impact: Medium**
 
 **Guidance**
@@ -132,5 +162,11 @@ Use app settings to hold configuration settings as app settings. Define the sett
 **Resources**
 
 - [Configure web apps in Azure App Service](https://learn.microsoft.com/azure/app-service-web/web-sites-configure)
+
+{{< collapse title="Show/Hide Query/Script" >}}
+
+{{< code lang="sql" file="code/app-6/app-6.kql" >}} {{< /code >}}
+
+{{< /collapse >}}
 
 <br><br>

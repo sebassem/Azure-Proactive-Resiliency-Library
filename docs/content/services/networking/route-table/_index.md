@@ -14,8 +14,8 @@ The presented resiliency recommendations in this guidance include Route Table an
 {{< table style="table-striped" >}}
 | Recommendation                                    |  Category                                                               |  Impact         |  State   | ARG Query Available |
 | :------------------------------------------------ | :---------------------------------------------------------------------: | :------:        | :------: | :-----------------: |
-| [RT-1 - Monitor changes in Route Tables with Azure Monitor](#rt-1---monitor-changes-in-route-tables-with-azure-monitor) | Monitoring | Low | Preview  |         No         |
-| [RT-2 - Configure locks for Route Tables to avoid accidental changes and or deletion](#rt-2---configure-locks-for-route-tables-to-avoid-accidental-changes-and or-deletion) | Governance         | Low | Preview |         No          |
+| [RT-1 - Monitor changes in Route Tables with Azure Monitor](#rt-1---monitor-changes-in-route-tables-with-azure-monitor) | Monitoring | Low | Preview  |         Yes         |
+| [RT-2 - Configure locks for Route Tables to avoid accidental changes or deletion](#rt-2---configure-locks-for-route-tables-to-avoid-accidental-changes-or-deletion) | Governance         | Low | Preview |         No          |
 {{< /table >}}
 
 {{< alert style="info" >}}
@@ -40,17 +40,17 @@ Create Alerts for administrative operations such as Create or Update Route Table
 
 - [Azure activity log - Azure Monitor | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log?tabs=powershell)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
-{{< code lang="sql" file="code/rt-1/rt-1.ps1" >}} {{< /code >}}
+{{< code lang="sql" file="code/rt-1/rt-1.kql" >}} {{< /code >}}
 
 {{< /collapse >}}
 
 <br><br>
 
-### RT-2 - Configure locks for Route Tables to avoid accidental changes and/or deletion
+### RT-2 - Configure locks for Route Tables to avoid accidental changes or deletion
 
 **Category: Governance**
 
@@ -65,11 +65,11 @@ You can set locks that prevent either deletions or modifications. In the portal,
 
 - [Protect your Azure resources with a lock - Azure Resource Manager | Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources?toc=%2Fazure%2Fvirtual-network%2Ftoc.json&tabs=json)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
-{{< code lang="sql" file="code/rt-2/rt-2.ps1" >}} {{< /code >}}
+{{< code lang="sql" file="code/rt-2/rt-2.kql" >}} {{< /code >}}
 
 {{< /collapse >}}
 

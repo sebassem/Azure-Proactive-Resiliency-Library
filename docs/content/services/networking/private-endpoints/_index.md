@@ -14,7 +14,7 @@ The presented resiliency recommendations in this guidance include Private Endpoi
 {{< table style="table-striped" >}}
 | Recommendation                                                                                                                                                      |  Category       |  Impact     |  State    | ARG Query Available |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------: | :------:    | :------:  | :-----------------: |
-| [PEP-1 - Resolve issues with Private Endpoints in non Succeeded connection state](#pep-1---resolve-issues-with-private-endpoints-in-non-succeeded-connection-state) | Networking      | Medium      | Preview   |         No         |
+| [PEP-1 - Resolve issues with Private Endpoints in non Succeeded connection state](#pep-1---resolve-issues-with-private-endpoints-in-non-succeeded-connection-state) | Networking      | Medium      | Preview   |         Yes         |
 {{< /table >}}
 
 {{< alert style="info" >}}
@@ -39,7 +39,7 @@ A private endpoint has two custom properties, static IP address and the network 
 
 - [Private endpoint connections](https://learn.microsoft.com/azure/private-link/manage-private-endpoint?tabs=manage-private-link-powershell#private-endpoint-connections)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 

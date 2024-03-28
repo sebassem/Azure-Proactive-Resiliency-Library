@@ -1,9 +1,13 @@
+
 // Azure Resource Graph Query
-// This query is checking if multiple applications are hosted on a app service plan
-resources
-| where type == "microsoft.web/sites"
-| extend AppServicePlanId = tostring(properties.serverFarmId)
-| project kind, AppServicePlanId
-| summarize WebCount = countif(kind == 'app'),  APICount = countif(kind == 'api'), AppsCount = count() by AppServicePlanId , AppServicePlanName = tostring(split(AppServicePlanId, "/")[-1])
-| where WebCount +APICount > 0 and AppsCount > 1
-| project recommendationId="app-2", ["name"]=AppServicePlanName, ["id"]=AppServicePlanId
+// Provides a list of Azure App Service resources and checks if they have Application Insights enabled by looking for the “APPINSIGHTS_INSTRUMENTATIONKEY” or “APPLICATIONINSIGHTS_CONNECTION_STRING” settings in their configuration.
+
+appserviceresources
+| where type == "microsoft.web/sites/config"
+| extend appSettings = properties.AppSettings
+| mv-expand appSettings
+| extend settingName = tostring(appSettings.Name)
+| extend isAppInsightsInstrumentationKey = iif(settingName == "APPINSIGHTS_INSTRUMENTATIONKEY", true, false)
+| extend isApplicationInsightsConnectionString = iif(settingName == "APPLICATIONINSIGHTS_CONNECTION_STRING", true, false)
+| extend isAppInsightsEnabled = iif(isAppInsightsInstrumentationKey or isApplicationInsightsConnectionString, true, false)
+| project recommendationId="app-2", name,  id, settingName, isAppInsightsInstrumentationKey, isApplicationInsightsConnectionString, isAppInsightsEnabled

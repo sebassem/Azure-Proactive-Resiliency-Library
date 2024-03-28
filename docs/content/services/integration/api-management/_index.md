@@ -12,10 +12,10 @@ The presented resiliency recommendations in this guidance include Api Management
 ## Summary of Recommendations
 
 {{< table style="table-striped" >}}
-| Recommendation                                    |  Impact         |  State            | ARG Query Available |
-| :------------------------------------------------ | :------:        | :------:          | :-----------------: |
-| [APIM-1 - Migrate API Management services to Premium SKU to support Availability Zones](#apim-1---migrate-api-management-services-to-premium-sku-to-support-availability-zones) |  High | Preview  |         Yes         |
-| [APIM-2 - Enable Availability Zones on Premium API Management instances](#apim-2---enable-availability-zones-on-premium-api-management-instances) | High | Preview  |         Yes          |
+| Recommendation                                                                                                                                                                  |   Category   | Impact |  State  | ARG Query Available |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------:|:------:|:-------:|:-------------------:|
+| [APIM-1 - Migrate API Management services to Premium SKU to support Availability Zones](#apim-1---migrate-api-management-services-to-premium-sku-to-support-availability-zones) | Availability |  High  | Preview |         Yes         |
+| [APIM-2 - Enable Availability Zones on Premium API Management instances](#apim-2---enable-availability-zones-on-premium-api-management-instances)                               | Availability |  High  | Preview |         Yes         |
 {{< /table >}}
 
 {{< alert style="info" >}}
@@ -28,6 +28,8 @@ Definitions of states can be found [here]({{< ref "../../../_index.md#definition
 
 ### APIM-1 - Migrate API Management services to Premium SKU to support Availability Zones
 
+**Category: Availability**
+
 **Impact: High**
 
 **Guidance**
@@ -39,7 +41,7 @@ Upgrade the API Management instance to the Premium SKU to add support for Availa
 - [Change your API Management service tier](https://learn.microsoft.com/en-us/azure/api-management/upgrade-and-scale#change-your-api-management-service-tier)
 - [Migrate Azure API Management to availability zone support](https://learn.microsoft.com/en-us/azure/reliability/migrate-api-mgt)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -50,6 +52,8 @@ Upgrade the API Management instance to the Premium SKU to add support for Availa
 <br><br>
 
 ### APIM-2 - Enable Availability Zones on Premium API Management instances
+
+**Category: Availability**
 
 **Impact: High**
 
@@ -62,7 +66,7 @@ Enable zone redundancy for APIM instances. With zone redundancy, the gateway and
 - [Ensure API Management availability and reliability](https://learn.microsoft.com/en-us/azure/api-management/high-availability#availability-zones)
 - [Migrate Azure API Management to availability zone support](https://learn.microsoft.com/en-us/azure/reliability/migrate-api-mgt)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 

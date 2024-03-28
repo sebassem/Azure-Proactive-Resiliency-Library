@@ -12,10 +12,10 @@ The presented resiliency recommendations in this guidance include Image Template
 ## Summary of Recommendations
 
 {{< table style="table-striped" >}}
-| Recommendation                                                                                                                                                                                                                     | Impact |  State  | ARG Query Available |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----: | :-----: | :-----------------: |
-| [IT-1 - Use Generation 2 virtual machine source image](#it-1---use-generation-2-virtual-machine-source-image)                                                                                                                          |  Low  | Preview |         No         |
-| [IT-2 - Replicate your Image Templates to a secondary region](#it-2---replicate-your-image-templates-to-a-secondary-region)                                                                                                                          |  Low  | Preview |         No         |
+| Recommendation                                                                                                              |     Category      | Impact |  State   | ARG Query Available |
+|:----------------------------------------------------------------------------------------------------------------------------|:-----------------:|:------:|:--------:|:-------------------:|
+| [IT-1 - Use Generation 2 virtual machine source image](#it-1---use-generation-2-virtual-machine-source-image)               |   Availability    |  Low   | Verified |         No          |
+| [IT-2 - Replicate your Image Templates to a secondary region](#it-2---replicate-your-image-templates-to-a-secondary-region) | Disaster Recovery |  Low   | Verified |         Yes         |
 {{< /table >}}
 
 {{< alert style="info" >}}
@@ -28,7 +28,7 @@ Definitions of states can be found [here]({{< ref "../../../_index.md#definition
 
 ### IT-1 - Use Generation 2 virtual machine source image
 
-**Impact: Availability**
+**Category: Availability**
 
 **Impact: Low**
 
@@ -44,6 +44,8 @@ When building your Image Templates, utilize source images that support generatio
 
 ### IT-2 - Replicate your Image Templates to a secondary region
 
+**Category: Disaster Recovery**
+
 **Impact: Low**
 
 **Guidance**
@@ -55,7 +57,7 @@ The Azure Image Builder service that is used to deploy Image Templates doesn't c
 - [Image Template resiliency](https://learn.microsoft.com/en-us/azure/reliability/reliability-image-builder?toc=%2Fazure%2Fvirtual-machines%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fbreadcrumb%2Ftoc.json#capacity-and-proactive-disaster-recovery-resiliency)
 - [Azure Image Builder Supported Regions](https://learn.microsoft.com/en-us/azure/virtual-machines/image-builder-overview?tabs=azure-powershell#regions)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 

@@ -13,14 +13,14 @@ The presented resiliency recommendations in this guidance include Azure Database
 ## Summary of Recommendations
 
 {{< table style="table-striped" >}}
-| Recommendation                                                                                                                                                                  | Impact  |  State  | ARG Query Available |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----:  | :-----: | :-----------------: |
-| [SQLDB-1 - Use Active Geo Replication to Create a Readable Secondary in Another Region](#sqldb-1---use-active-geo-replication-to-create-a-readable-secondary-in-another-region) | High    | Preview |         No          |
-| [SQLDB-2 - Use Auto Failover Groups that can include one or multiple databases, typically used by the same application](#sqldb-2---use-auto-failover-groups-that-can-include-one-or-multiple-databases-typically-used-by-the-same-application)                                                           |  High   | Preview |         No          |
-| [SQLDB-3 - Use a Zone-Redundant database](#sqldb-3---use-a-zone-redundant-database)                                                                                             | Medium  | Preview |         No          |
-| [SQLDB-4 - Implement Retry Logic](#sqldb-4---implement-retry-logic)                                                                                                             |  High   | Preview |         No          |
-| [SQLDB-5 - Monitor your Azure SQL Database in near-real time to detect reliability incidents](#sqldb-5---monitor-your-azure-sql-database-in-near-real-time-to-detect-reliability-incidents)                                                                                    |  High   | Preview |         No          |
-| [SQLDB-6 - Back up your keys](#sqldb-6---back-up-your-keys)                                                                                                                     | Medium  | Preview |         No          |
+| Recommendation                                                                                                                                                                                                                                 |        Category        | Impact |  State  | ARG Query Available |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------:|:------:|:-------:|:-------------------:|
+| [SQLDB-1 - Use Active Geo Replication to Create a Readable Secondary in Another Region](#sqldb-1---use-active-geo-replication-to-create-a-readable-secondary-in-another-region)                                                                |   Disaster Recovery    |  High  | Preview |         Yes         |
+| [SQLDB-2 - Use Auto Failover Groups that can include one or multiple databases, typically used by the same application](#sqldb-2---use-auto-failover-groups-that-can-include-one-or-multiple-databases-typically-used-by-the-same-application) |   Disaster Recovery    |  High  | Preview |         Yes         |
+| [SQLDB-3 - Use a Zone-Redundant database](#sqldb-3---use-a-zone-redundant-database)                                                                                                                                                            |      Availability      | Medium | Preview |         Yes         |
+| [SQLDB-4 - Implement Retry Logic](#sqldb-4---implement-retry-logic)                                                                                                                                                                            | Application Resilience |  High  | Preview |         Yes         |
+| [SQLDB-5 - Monitor your Azure SQL Database in near-real time to detect reliability incidents](#sqldb-5---monitor-your-azure-sql-database-in-near-real-time-to-detect-reliability-incidents)                                                    |       Monitoring       |  High  | Preview |         Yes         |
+| [SQLDB-6 - Back up your keys](#sqldb-6---back-up-your-keys)                                                                                                                                                                                    |   Disaster Recovery    | Medium | Preview |         Yes         |
 {{< /table >}}
 
 {{< alert style="info" >}}
@@ -45,7 +45,7 @@ If your primary database fails, perform a manual failover to the secondary datab
 
 - [Active Geo Replication](https://learn.microsoft.com/en-us/azure/azure-sql/database/active-geo-replication-overview)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -70,7 +70,7 @@ You can use the readable secondary databases to offload read-only query workload
 - [AutoFailover Groups](https://learn.microsoft.com/en-us/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell)
 - [DR Design](https://learn.microsoft.com/en-us/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -94,7 +94,7 @@ By default, the cluster of nodes for the premium availability model is created i
 
 -[Zone Redundant Databases](https://learn.microsoft.com/en-us/azure/azure-sql/database/high-availability-sla)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -118,7 +118,7 @@ Although Azure SQL Database is resilient when it concerns transitive infrastruct
 
 - [How to Implement Retry Logic](https://learn.microsoft.com/en-us/azure/azure-sql/database/troubleshoot-common-connectivity-issues)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -132,7 +132,7 @@ Although Azure SQL Database is resilient when it concerns transitive infrastruct
 
 **Category: Monitoring**
 
-**Impact: Medium**
+**Impact: High**
 
 **Guidance**
 
@@ -144,7 +144,7 @@ Use one of the available solutions to monitor SQL DB to detect potential reliabi
 - [Azure SQL Database Monitoring](https://learn.microsoft.com/en-us/azure/azure-sql/database/monitoring-sql-database-azure-monitor)
 - [Monitoring SQL Database Reference](https://learn.microsoft.com/en-us/azure/azure-sql/database/monitoring-sql-database-azure-monitor-reference)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 
@@ -169,7 +169,7 @@ It is highly recommended to use Azure Key Vault (AKV) to store encryption keys r
 - [Azure Key Vault](https://learn.microsoft.com/en-us/azure/key-vault/general/overview)
 - [Getting Started with Always Encrypted](https://learn.microsoft.com/en-us/azure/azure-sql/database/always-encrypted-landing?view=azuresql)
 
-**Resource Graph Query/Scripts**
+**Resource Graph Query**
 
 {{< collapse title="Show/Hide Query/Script" >}}
 

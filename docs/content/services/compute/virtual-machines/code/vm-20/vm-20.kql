@@ -1,18 +1,26 @@
 // Azure Resource Graph Query
-// Find all VMs that do not have the VM Insights extension installed
-resources
+// Check for VMs without Azure Monitoring Agent extension installed, missing Data Collection Rule or Data Collection Rule without performance enabled.
+Resources
 | where type == 'microsoft.compute/virtualmachines'
-| extend
-    JoinID = toupper(id),
-    vmName = name,
-    OSType = tostring(properties.storageProfile.osDisk.osType)
-| join kind=leftouter(
-    resources
-    | where type == 'microsoft.compute/virtualmachines/extensions'
+| project idVm = tolower(id), name, tags
+| join kind=leftouter (
+    InsightsResources
+    | where type =~ "Microsoft.Insights/dataCollectionRuleAssociations" and id has "Microsoft.Compute/virtualMachines"
+    | project idDcr = tolower(properties.dataCollectionRuleId), idVmDcr = tolower(substring(id, 0, indexof(id, "/providers/Microsoft.Insights/dataCollectionRuleAssociations/"))))
+on $left.idVm == $right.idVmDcr
+| join kind=leftouter (
+    Resources
+    | where type =~ "Microsoft.Insights/dataCollectionRules"
     | extend
-        VMId = toupper(substring(id, 0, indexof(id, '/extensions'))),
-        ExtensionName = name
-) on $left.JoinID == $right.VMId
-| summarize param2 = strcat ("Extensions: ", make_list(ExtensionName)) by recommendationId="vm-20", name=vmName, id, param1=OSType
-| where param2 !contains "MicrosoftMonitoringAgent" and param2 !contains "OMSAgentforLinux" and param2 !contains "AzureMonitorWindowsAgent" and param2 !contains "AzureMonitorLinuxAgent"
-| order by tolower(name) asc
+        isPerformanceEnabled = iif(properties.dataSources.performanceCounters contains "Microsoft-InsightsMetrics" and properties.dataFlows contains "Microsoft-InsightsMetrics", true, false),
+        isMapEnabled = iif(properties.dataSources.extensions contains "Microsoft-ServiceMap" and properties.dataSources.extensions contains "DependencyAgent" and properties.dataFlows contains "Microsoft-ServiceMap", true, false)//,
+    | where isPerformanceEnabled or isMapEnabled
+    | project dcrName = name, isPerformanceEnabled, isMapEnabled, idDcr = tolower(id))
+on $left.idDcr == $right.idDcr
+| join kind=leftouter (
+    Resources
+        | where type == 'microsoft.compute/virtualmachines/extensions' and (name contains 'AzureMonitorWindowsAgent' or name contains 'AzureMonitorLinuxAgent')
+        | extend idVmExtension = tolower(substring(id, 0, indexof(id, '/extensions'))), extensionName = name)
+on $left.idVm == $right.idVmExtension
+| where isPerformanceEnabled != 1 or (extensionName != 'AzureMonitorWindowsAgent' and extensionName != 'AzureMonitorLinuxAgent')
+| project recommendationId = "vm-20", name, id = idVm, tags, param1 = strcat('MonitoringExtension:', extensionName), param2 = strcat('DataCollectionRuleId:', idDcr), param3 = strcat('isPerformanceEnabled:', isPerformanceEnabled)
