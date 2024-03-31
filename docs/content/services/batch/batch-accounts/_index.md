@@ -14,8 +14,8 @@ The presented resiliency recommendations in this guidance include Batch Accounts
 {{< table style="table-striped" >}}
 | Recommendation | Impact | Design Area | State | ARG Query Available |
 |:--------------------------------------------------------------------------------------------------------------------------|:------:|:------------:|:-------:|:-------------------:|
-| [BA-1 Monitor Batch account quota](#ba-1---monitor-batch-account-quota) | Medium | Monitoring | Preview | No |
-| [BA-3 Create an Azure Batch pool across Availability Zones](#ba-3---create-an-azure-batch-pool-across-availability-zones) | High | Availability | Preview | No |
+| [BA-1 - Monitor Batch account quota](#ba-1---monitor-batch-account-quota) | Medium | Monitoring | Preview | No |
+| [BA-3 - Create an Azure Batch pool across Availability Zones](#ba-3---create-an-azure-batch-pool-across-availability-zones) | High | Availability | Preview | No |
 
 {{< /table >}}
 

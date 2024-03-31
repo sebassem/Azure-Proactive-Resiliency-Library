@@ -14,25 +14,25 @@ The presented resiliency recommendations in this guidance include Azure VMware S
 {{< table style="table-striped" >}}
 |  Recommendation                                   |      Category         |  Impact         |  State            | ARG Query Available |
 | :------------------------------------------------ | :---------------------------------------------------------------------: | :------:        | :------:          | :------:          |
-|[AVS-1 Configure Azure Service Health notifications and alerts for Azure VMware Solution](#avs-1---configure-azure-service-health-notifications-and-alerts-for-azure-vmware-solution) | Monitoring | High | Verified | Yes |
-|[AVS-2 Configure Syslog in Diagnostic Settings for Azure VMware Solution](#avs-2---configure-syslog-in-diagnostic-settings-for-azure-vmware-solution) | Monitoring | Medium | Verified | Yes |
-|[AVS-3 Configure Azure Monitor Alert warning thresholds for vSAN datastore utilization](#avs-3---configure-azure-monitor-alert-warning-thresholds-for-vsan-datastore-utilization) | Monitoring | High | Verified | No |
-|[AVS-4 Enable Stretched Clusters for Multi-AZ Availability of the vSAN Datastore](#avs-4---enable-stretched-clusters-for-multi-az-availability-of-the-vsan-datastore) | Availability | Low | Verified | Yes |
-|[AVS-5 Monitor CPU Utilization to ensure sufficient resources for workloads](#avs-5---monitor-cpu-utilization-to-ensure-sufficient-resources-for-workloads) | Monitoring | Medium | Verified | Yes |
-|[AVS-6 Monitor Memory Utilization to ensure sufficient resources for workloads](#avs-6---monitor-memory-utilization-to-ensure-sufficient-resources-for-workloads) | Monitoring | Medium | Verified | Yes |
-|[AVS-7 Monitor when Azure VMware Solution Cluster Size is approaching the host limit](#avs-7---monitor-when-azure-vmware-solution-cluster-size-is-approaching-the-host-limit) | Monitoring | Medium | Verified | No |
-|[AVS-8 Monitor when Azure VMware Solution Private Cloud is reaching the capacity limit](#avs-8---monitor-when-azure-vmware-solution-private-cloud-is-reaching-the-capacity-limit) | Monitoring | Medium | Verified | No |
-|[AVS-9 Apply Resource delete lock on the resource group hosting the private cloud](#avs-9---apply-resource-delete-lock-on-the-resource-group-hosting-the-private-cloud) | Governance | High | Verified | No |
-|[AVS-10 Align ExpressRoute configuration with best practices for circuit resilience](#avs-10---align-expressroute-configuration-with-best-practices-for-circuit-resilience) | Networking | High | Preview | No |
-|[AVS-11 Deploy two or more circuits in different peering locations when using stretched clusters](#avs-11---deploy-two-or-more-circuits-in-different-peering-locations-when-using-stretched-clusters) | Networking | High | Preview | No |
-|[AVS-12 Deploy two Azure VMware Solution private clouds in different regions for geographical disaster recovery](#avs-12---deploy-two-azure-vmware-solution-private-clouds-in-different-regions-for-geographical-disaster-recovery) | Disaster Recovery | High | Preview | No |
-|[AVS-13 Use the AVS Interconnect feature to connect private clouds in different availability zones](#avs-13---use-the-avs-interconnect-feature-to-connect-private-clouds-in-different-availability-zones) | Storage | High | Preview | No |
-|[AVS-14 Use key autorotation for vSAN datastore customer-managed keys](#avs-14---use-key-autorotation-for-vsan-datastore-customer-managed-keys) | Storage | High | Preview | No |
-|[AVS-15 Configure LDAPS Identity integration with two sources for NSX and vCenter Server management consoles](#avs-15---configure-ldaps-identity-integration-with-two-sources-for-nsx-and-vcenter-server-management-consoles) | Storage | High | Preview | No |
-|[AVS-16 Use HCX Network Extension High Availability](#avs-16---use-hcx-network-extension-high-availability) | Availability | High | Preview | No |
-|[AVS-17 Verify Management Networks are not extended with HCX Network Extension](#avs-17---verify-management-networks-are-not-extended-with-hcx-network-extension) | Networking | High | Preview | No |
-|[AVS-18 Use multiple DNS servers per private FQDN zone](#avs-18---use-multiple-dns-servers-per-private-fqdn-zone) | Networking | High | Preview | No |
-|[AVS-19 Verify vSAN FTT configuration aligns with the cluster size](#avs-19---verify-vsan-ftt-configuration-aligns-with-the-cluster-size) | Application Resilience | High | Preview | No |
+|[AVS-1 - Configure Azure Service Health notifications and alerts for Azure VMware Solution](#avs-1---configure-azure-service-health-notifications-and-alerts-for-azure-vmware-solution) | Monitoring | High | Verified | Yes |
+|[AVS-2 - Configure Syslog in Diagnostic Settings for Azure VMware Solution](#avs-2---configure-syslog-in-diagnostic-settings-for-azure-vmware-solution) | Monitoring | Medium | Verified | Yes |
+|[AVS-3 - Configure Azure Monitor Alert warning thresholds for vSAN datastore utilization](#avs-3---configure-azure-monitor-alert-warning-thresholds-for-vsan-datastore-utilization) | Monitoring | High | Verified | No |
+|[AVS-4 - Enable Stretched Clusters for Multi-AZ Availability of the vSAN Datastore](#avs-4---enable-stretched-clusters-for-multi-az-availability-of-the-vsan-datastore) | Availability | Low | Verified | Yes |
+|[AVS-5 - Monitor CPU Utilization to ensure sufficient resources for workloads](#avs-5---monitor-cpu-utilization-to-ensure-sufficient-resources-for-workloads) | Monitoring | Medium | Verified | Yes |
+|[AVS-6 - Monitor Memory Utilization to ensure sufficient resources for workloads](#avs-6---monitor-memory-utilization-to-ensure-sufficient-resources-for-workloads) | Monitoring | Medium | Verified | Yes |
+|[AVS-7 - Monitor when Azure VMware Solution Cluster Size is approaching the host limit](#avs-7---monitor-when-azure-vmware-solution-cluster-size-is-approaching-the-host-limit) | Monitoring | Medium | Verified | No |
+|[AVS-8 - Monitor when Azure VMware Solution Private Cloud is reaching the capacity limit](#avs-8---monitor-when-azure-vmware-solution-private-cloud-is-reaching-the-capacity-limit) | Monitoring | Medium | Verified | No |
+|[AVS-9 - Apply Resource delete lock on the resource group hosting the private cloud](#avs-9---apply-resource-delete-lock-on-the-resource-group-hosting-the-private-cloud) | Governance | High | Verified | No |
+|[AVS-10 - Align ExpressRoute configuration with best practices for circuit resilience](#avs-10---align-expressroute-configuration-with-best-practices-for-circuit-resilience) | Networking | High | Preview | No |
+|[AVS-11 - Deploy two or more circuits in different peering locations when using stretched clusters](#avs-11---deploy-two-or-more-circuits-in-different-peering-locations-when-using-stretched-clusters) | Networking | High | Preview | No |
+|[AVS-12 - Deploy two Azure VMware Solution private clouds in different regions for geographical disaster recovery](#avs-12---deploy-two-azure-vmware-solution-private-clouds-in-different-regions-for-geographical-disaster-recovery) | Disaster Recovery | High | Preview | No |
+|[AVS-13 - Use the AVS Interconnect feature to connect private clouds in different availability zones](#avs-13---use-the-avs-interconnect-feature-to-connect-private-clouds-in-different-availability-zones) | Storage | High | Preview | No |
+|[AVS-14 - Use key autorotation for vSAN datastore customer-managed keys](#avs-14---use-key-autorotation-for-vsan-datastore-customer-managed-keys) | Storage | High | Preview | No |
+|[AVS-15 - Configure LDAPS Identity integration with two sources for NSX and vCenter Server management consoles](#avs-15---configure-ldaps-identity-integration-with-two-sources-for-nsx-and-vcenter-server-management-consoles) | Storage | High | Preview | No |
+|[AVS-16 - Use HCX Network Extension High Availability](#avs-16---use-hcx-network-extension-high-availability) | Availability | High | Preview | No |
+|[AVS-17 - Verify Management Networks are not extended with HCX Network Extension](#avs-17---verify-management-networks-are-not-extended-with-hcx-network-extension) | Networking | High | Preview | No |
+|[AVS-18 - Use multiple DNS servers per private FQDN zone](#avs-18---use-multiple-dns-servers-per-private-fqdn-zone) | Networking | High | Preview | No |
+|[AVS-19 - Verify vSAN FTT configuration aligns with the cluster size](#avs-19---verify-vsan-ftt-configuration-aligns-with-the-cluster-size) | Application Resilience | High | Preview | No |
 
 
 {{< /table >}}

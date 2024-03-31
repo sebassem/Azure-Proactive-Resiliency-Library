@@ -14,40 +14,40 @@ The presented resiliency recommendations in this guidance include Azure Virtual 
 {{< table style="table-striped" >}}
 | Recommendation | Category | Impact | State | ARG Query Available |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------:|:--------:|:-------:|:-------------------:|
-| [AVD-1 Use Private link when connecting to File Share or Key Vault](#avd-1---use-private-link-when-connecting-to-file-share-or-key-vault) | Access & Security | Medium | Verified | Yes |
-| [AVD-2 Monitor Service Health and Resource Health of AVD](#avd-2---monitor-service-health-and-resource-health-of-avd) | Monitoring | High | Verified | Yes |
-| [AVD-4 Deploy Domain Controllers and DNS Servers in Azure Virtual Network Across Availability Zones](#avd-4---deploy-domain-controllers-and-dns-servers-in-azure-virtual-network-across-availability-zones) | Availability | Medium | Verified | No |
-| [AVD-5 Implement RDP Shortpath for Public or Managed Networks](#avd-5---implement-rdp-shortpath-for-public-or-managed-networks) | Networking | Medium | Verified | No |
-| [AVD-6 Implement a Multi-Region BCDR Plan](#avd-6---implement-a-multi-region-bcdr-plan) | Disaster Recovery | Medium | Verified | No |
-| [AVD-7 Store Golden Image Redundantly for Disaster Recovery](#avd-7---store-golden-image-redundantly-for-disaster-recovery) | Disaster Recovery | Low | Verified | No |
-| [AVD-8 Capacity Planning for AVD Resources](#avd-8---capacity-planning-for-avd-resources) | Disaster Recovery | Low | Verified | No |
-| [AVD-9 Ensure that FSLogix Storage Account is Redundant](#avd-9---ensure-that-fslogix-storage-account-is-redundant) | Availability | High | Verified | Yes |
-| [AVD-10 Enable Azure Backup for FSLogix Storage Account](#avd-10---enable-azure-backup-for-fslogix-storage-account) | Storage | Medium | Verified | No |
-| [AVD-11 Scaling plans should be created per region and not scaled across regions](#avd-11---scaling-plans-should-be-created-per-region-and-not-scaled-across-regions) | Disaster Recovery | Medium | Verified | No |
-| [AVD-13 Validate that the AVD session hosts can communicate with the AVD control plane and UDP ports are open if UDP is in use](#avd-13---validate-avd-session-host-connectivity-to-the-avd-control-plane-and-udp-ports-open-if-in-use) | Networking | Medium | Verified | No |
-| [AVD-14 Ensure Secondary Entra ID connect synchronization server](#avd-14---ensure-secondary-entra-id-connect-synchronization-server) | Access & Security | Low | Verified | No |
-| [AVD-15 Deploy paired Domain Controllers in the same region as AVD session hosts](#avd-15---deploy-paired-domain-controllers-in-the-same-region-as-avd-session-hosts) | Disaster Recovery | High | Verified | No |
-| [AVD-16 Ensure DNS regions are replicated to avoid single point of failure](#avd-16---ensure-dns-regions-are-replicated-to-avoid-single-point-of-failure) | Networking | Medium | Verified | No |
-| [AVD-17 Capacity Planning for AVD Resources](#avd-17---capacity-planning-for-avd-resources) | Disaster Recovery | Low | Verified | No |
-| [AVD-18 Create new version of updated image and replace session hosts rather than update host directly](#avd-18---create-updated-image-version-and-replace-session-hosts-rather-than-updating-host-directly) | Governance | Low | Verified | No |
-| [AVD-19 Pooled Create a validation pool for testing of planned updates](#avd-19---pooled-create-a-validation-pool-for-testing-of-planned-updates) | Governance | Medium | Verified | No |
-| [AVD-20 Pooled Configure scheduled agent updates](#avd-20---pooled-configure-scheduled-agent-updates) | System Efficiency | Medium | Verified | No |
-| [AVD-21 Personal Create a validation pool for testing of planned updates](#avd-21---personal-create-a-validation-pool-for-testing-of-planned-updates) | Governance | Low | Verified | No |
-| [AVD-22 Use Azure Site Recovery or Backups on VMs supporting personal desktops](#avd-22---use-azure-site-recovery-or-backups-on-vms-supporting-personal-desktops) | Disaster Recovery | Medium | Verified | No |
-| [AVD-23 Ensure a unique OU when deploying VMs to Domain](#avd-23---ensure-a-unique-ou-when-deploying-vms-to-domain) | Governance | Medium | Verified | No |
-| [AVD-24 Ensure the standard FSLogix configuration is deployed](#avd-24---ensure-the-standard-fslogix-configuration-is-deployed) | Storage | Medium | Verified | No |
-| [AVD-25 Ensure user permissions are set correctly on SMB shares](#avd-25---ensure-user-permissions-are-set-correctly-on-smb-shares) | Storage | Medium | Verified | No |
-| [AVD-26 Configure Diagnostic Settings for FSLogix logs and enable review for accounts](#avd-26---configure-diagnostic-settings-for-fslogix-logs-and-enable-review-for-accounts) | Storage | Medium | Verified | No |
-| [AVD-27 Manually update new FSLogix image when available](#avd-27---manually-update-new-fslogix-image-when-available) | Availability | Low | Verified | No |
-| [AVD-28 Turn on Continuous Availability for ANF if using App Attach](#avd-28---turn-on-continuous-availability-for-anf-if-using-app-attach) | App Attach Storage | Medium | Verified | No |
-| [AVD-29 App attach should be placed in separate file share; Disaster recovery plan should include App attach storage](#avd-29---app-attach-should-be-placed-in-separate-file-share-and-disaster-recovery-plan-should-include-app-attach-storage) | Storage | Medium | Verified | No |
-| [AVD-30 Ensure virtual networks have route tables/route server configured for all regions](#avd-30---ensure-virtual-networks-have-route-tablesroute-server-configured-for-all-regions) | Networking | Medium | Verified | No |
-| [AVD-31 Ensure virtual networks isolation with separate IP space and NSGs for Prod and DR](#avd-31---ensure-virtual-networks-isolation-with-separate-ip-space-and-nsgs-for-prod-and-dr) | Networking | Medium | Verified | No |
-| [AVD-33 Ensure route tables accommodate failover](#avd-33---ensure-route-tables-accommodate-failover) | Disaster Recovery | Medium | Verified | No |
-| [AVD-34 Ensure Resilient Deployment of Keyvault for AVD Host Pools](#avd-34---provision-secondary-key-vault-for-disaster-recovery) | Disaster Recovery | High | Verified | No |
-| [AVD-35 Configure AVD insights Workbook](#avd-35---configure-avd-insights-workbook) | Monitoring | High | Verified | No |
-| [AVD-36 Ensure separate log analytics workspaces for Prod and DR](#avd-36---ensure-separate-log-analytics-workspaces-for-prod-and-dr) | Disaster Recovery | Low | Verified | No |
-| [AVD-37 Organize AVD resources using the AVD Scale unit model described by the AVD Landing Zone Methodology](#avd-37---organize-avd-resources-using-the-avd-scale-unit-model-described-by-the-avd-landing-zone-methodology) | Governance | Low | Verified | No |
+| [AVD-1 - Use Private link when connecting to File Share or Key Vault](#avd-1---use-private-link-when-connecting-to-file-share-or-key-vault) | Access & Security | Medium | Verified | Yes |
+| [AVD-2 - Monitor Service Health and Resource Health of AVD](#avd-2---monitor-service-health-and-resource-health-of-avd) | Monitoring | High | Verified | Yes |
+| [AVD-4 - Deploy Domain Controllers and DNS Servers in Azure Virtual Network Across Availability Zones](#avd-4---deploy-domain-controllers-and-dns-servers-in-azure-virtual-network-across-availability-zones) | Availability | Medium | Verified | No |
+| [AVD-5 - Implement RDP Shortpath for Public or Managed Networks](#avd-5---implement-rdp-shortpath-for-public-or-managed-networks) | Networking | Medium | Verified | No |
+| [AVD-6 - Implement a Multi-Region BCDR Plan](#avd-6---implement-a-multi-region-bcdr-plan) | Disaster Recovery | Medium | Verified | No |
+| [AVD-7 - Store Golden Image Redundantly for Disaster Recovery](#avd-7---store-golden-image-redundantly-for-disaster-recovery) | Disaster Recovery | Low | Verified | No |
+| [AVD-8 - Capacity Planning for AVD Resources](#avd-8---capacity-planning-for-avd-resources) | Disaster Recovery | Low | Verified | No |
+| [AVD-9 - Ensure that FSLogix Storage Account is Redundant](#avd-9---ensure-that-fslogix-storage-account-is-redundant) | Availability | High | Verified | Yes |
+| [AVD-10 - Enable Azure Backup for FSLogix Storage Account](#avd-10---enable-azure-backup-for-fslogix-storage-account) | Storage | Medium | Verified | No |
+| [AVD-11 - Scaling plans should be created per region and not scaled across regions](#avd-11---scaling-plans-should-be-created-per-region-and-not-scaled-across-regions) | Disaster Recovery | Medium | Verified | No |
+| [AVD-13 - Validate that the AVD session hosts can communicate with the AVD control plane and UDP ports are open if UDP is in use](#avd-13---validate-avd-session-host-connectivity-to-the-avd-control-plane-and-udp-ports-open-if-in-use) | Networking | Medium | Verified | No |
+| [AVD-14 - Ensure Secondary Entra ID connect synchronization server](#avd-14---ensure-secondary-entra-id-connect-synchronization-server) | Access & Security | Low | Verified | No |
+| [AVD-15 - Deploy paired Domain Controllers in the same region as AVD session hosts](#avd-15---deploy-paired-domain-controllers-in-the-same-region-as-avd-session-hosts) | Disaster Recovery | High | Verified | No |
+| [AVD-16 - Ensure DNS regions are replicated to avoid single point of failure](#avd-16---ensure-dns-regions-are-replicated-to-avoid-single-point-of-failure) | Networking | Medium | Verified | No |
+| [AVD-17 - Capacity Planning for AVD Resources](#avd-17---capacity-planning-for-avd-resources) | Disaster Recovery | Low | Verified | No |
+| [AVD-18 - Create new version of updated image and replace session hosts rather than update host directly](#avd-18---create-updated-image-version-and-replace-session-hosts-rather-than-updating-host-directly) | Governance | Low | Verified | No |
+| [AVD-19 - Pooled Create a validation pool for testing of planned updates](#avd-19---pooled-create-a-validation-pool-for-testing-of-planned-updates) | Governance | Medium | Verified | No |
+| [AVD-20 - Pooled Configure scheduled agent updates](#avd-20---pooled-configure-scheduled-agent-updates) | System Efficiency | Medium | Verified | No |
+| [AVD-21 - Personal Create a validation pool for testing of planned updates](#avd-21---personal-create-a-validation-pool-for-testing-of-planned-updates) | Governance | Low | Verified | No |
+| [AVD-22 - Use Azure Site Recovery or Backups on VMs supporting personal desktops](#avd-22---use-azure-site-recovery-or-backups-on-vms-supporting-personal-desktops) | Disaster Recovery | Medium | Verified | No |
+| [AVD-23 - Ensure a unique OU when deploying VMs to Domain](#avd-23---ensure-a-unique-ou-when-deploying-vms-to-domain) | Governance | Medium | Verified | No |
+| [AVD-24 - Ensure the standard FSLogix configuration is deployed](#avd-24---ensure-the-standard-fslogix-configuration-is-deployed) | Storage | Medium | Verified | No |
+| [AVD-25 - Ensure user permissions are set correctly on SMB shares](#avd-25---ensure-user-permissions-are-set-correctly-on-smb-shares) | Storage | Medium | Verified | No |
+| [AVD-26 - Configure Diagnostic Settings for FSLogix logs and enable review for accounts](#avd-26---configure-diagnostic-settings-for-fslogix-logs-and-enable-review-for-accounts) | Storage | Medium | Verified | No |
+| [AVD-27 - Manually update new FSLogix image when available](#avd-27---manually-update-new-fslogix-image-when-available) | Availability | Low | Verified | No |
+| [AVD-28 - Turn on Continuous Availability for ANF if using App Attach](#avd-28---turn-on-continuous-availability-for-anf-if-using-app-attach) | App Attach Storage | Medium | Verified | No |
+| [AVD-29 - App attach should be placed in separate file share; Disaster recovery plan should include App attach storage](#avd-29---app-attach-should-be-placed-in-separate-file-share-and-disaster-recovery-plan-should-include-app-attach-storage) | Storage | Medium | Verified | No |
+| [AVD-30 - Ensure virtual networks have route tables/route server configured for all regions](#avd-30---ensure-virtual-networks-have-route-tablesroute-server-configured-for-all-regions) | Networking | Medium | Verified | No |
+| [AVD-31 - Ensure virtual networks isolation with separate IP space and NSGs for Prod and DR](#avd-31---ensure-virtual-networks-isolation-with-separate-ip-space-and-nsgs-for-prod-and-dr) | Networking | Medium | Verified | No |
+| [AVD-33 - Ensure route tables accommodate failover](#avd-33---ensure-route-tables-accommodate-failover) | Disaster Recovery | Medium | Verified | No |
+| [AVD-34 - Ensure Resilient Deployment of Keyvault for AVD Host Pools](#avd-34---provision-secondary-key-vault-for-disaster-recovery) | Disaster Recovery | High | Verified | No |
+| [AVD-35 - Configure AVD insights Workbook](#avd-35---configure-avd-insights-workbook) | Monitoring | High | Verified | No |
+| [AVD-36 - Ensure separate log analytics workspaces for Prod and DR](#avd-36---ensure-separate-log-analytics-workspaces-for-prod-and-dr) | Disaster Recovery | Low | Verified | No |
+| [AVD-37 - Organize AVD resources using the AVD Scale unit model described by the AVD Landing Zone Methodology](#avd-37---organize-avd-resources-using-the-avd-scale-unit-model-described-by-the-avd-landing-zone-methodology) | Governance | Low | Verified | No |
 | [IT-2 - Replicate your Image Templates to a secondary region](https://azure.github.io/Azure-Proactive-Resiliency-Library/services/compute/image-templates/#it-2---replicate-your-image-templates-to-a-secondary-region) | Disaster Recovery | Low | Preview | Yes |
 | [CG-2 - Zone redundant storage should be used for image versions](https://azure.github.io/Azure-Proactive-Resiliency-Library/services/compute/compute-gallery/#cg-2---zone-redundant-storage-should-be-used-for-image-versions) | Availability | Medium | Verified | Yes |
 | [VM-2 - Deploy VMs across Availability Zones](https://azure.github.io/Azure-Proactive-Resiliency-Library/services/compute/virtual-machines/#vm-2---deploy-vms-across-availability-zones) | Availability | High | Verified | Yes |
