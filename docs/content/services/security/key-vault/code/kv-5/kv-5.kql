@@ -27,5 +27,5 @@ policyresources
   | project resourceId = tostring(tolower(id)),name,tags
 )on resourceId
 | project-away resourceId1,policySetDefinitionId1,policySetDefinitionId,policyDefinitionId,displayName
-| project recommendationID = "kv-5",resourceId,name,tags
+| project recommendationID = "kv-5",id=resourceId,name,tags
 
