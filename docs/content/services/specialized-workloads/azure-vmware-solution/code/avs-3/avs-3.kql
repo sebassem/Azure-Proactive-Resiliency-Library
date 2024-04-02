@@ -3,7 +3,7 @@
 (
 resources
 | where ['type'] == "microsoft.avs/privateclouds"
-| extend scopeId = tostring(id)
+| extend scopeId = tolower(tostring(id))
 | project ['scopeId'], name, id, tags
 | join kind=leftouter (
 resources
@@ -11,7 +11,7 @@ resources
 | extend alertProperties = todynamic(properties)
 | mv-expand alertProperties.scopes
 | mv-expand alertProperties.criteria.allOf
-| extend scopeId = tostring(alertProperties_scopes)
+| extend scopeId = tolower(tostring(alertProperties_scopes))
 | extend metric = alertProperties_criteria_allOf.metricName
 | extend threshold = alertProperties_criteria_allOf.threshold
 | project scopeId, tostring(metric), toint(['threshold'])
@@ -24,7 +24,7 @@ resources
 | union (
 resources
 | where ['type'] == "microsoft.avs/privateclouds"
-| extend scopeId = tostring(id)
+| extend scopeId = tolower(tostring(id))
 | project ['scopeId'], name, id, tags
 | join kind=leftouter (
 resources
@@ -32,7 +32,7 @@ resources
 | extend alertProperties = todynamic(properties)
 | mv-expand alertProperties.scopes
 | mv-expand alertProperties.criteria.allOf
-| extend scopeId = tostring(alertProperties_scopes)
+| extend scopeId = tolower(tostring(alertProperties_scopes))
 | extend metric = alertProperties_criteria_allOf.metricName
 | extend threshold = alertProperties_criteria_allOf.threshold
 | project scopeId, tostring(metric), toint(['threshold'])

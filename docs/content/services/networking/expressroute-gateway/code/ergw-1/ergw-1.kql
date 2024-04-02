@@ -5,28 +5,28 @@
 (resources
 | where type == "microsoft.network/virtualnetworkgateways"
 | where properties.gatewayType == "ExpressRoute"
-| extend exrGatewayId = tostring(id)
+| extend exrGatewayId = tolower(tostring(id))
 | join kind=inner(
 resources
 | where type == "microsoft.network/virtualnetworkgateways"
 | where properties.gatewayType == "ExpressRoute"
-| extend exrGatewayId = tostring(id)
+| extend exrGatewayId = tolower(tostring(id))
 | join kind=leftouter(
 //connections joined with circuit peer info
 resources
 | where type == "microsoft.network/connections"
 | extend connectionType = properties.connectionType
-| extend exrGatewayId = tostring(properties.virtualNetworkGateway1.id)
-| extend peerId = tostring(properties.peer.id)
-| extend connectionId = tostring(id)
+| extend exrGatewayId = tolower(tostring(properties.virtualNetworkGateway1.id))
+| extend peerId = tolower(tostring(properties.peer.id))
+| extend connectionId = tolower(tostring(id))
 | where connectionType == "ExpressRoute"
 | join kind=leftouter(
   resources
   | where type == "microsoft.network/expressroutecircuits"
     //should this be location instead of peeringLocation
-  | extend circuitId = tostring(id)
+  | extend circuitId = tolower(tostring(id))
   | extend peeringLocation = tostring(properties.serviceProviderProperties.peeringLocation)
-  | extend peerId = id
+  | extend peerId = tolower(id)
 ) on peerId ) on exrGatewayId
 //remove bare metal services connections/circuits
 | where not(isnotnull(connectionId) and isnull(sku1))
@@ -41,15 +41,15 @@ resources
 resources
 | where type == "microsoft.network/virtualnetworkgateways"
 | where properties.gatewayType == "ExpressRoute"
-| extend exrGatewayId = tostring(id)
+| extend exrGatewayId = tolower(tostring(id))
 | join kind=leftouter(
 //connections joined with circuit peer info
 resources
 | where type == "microsoft.network/connections"
 | extend connectionType = properties.connectionType
-| extend exrGatewayId = tostring(properties.virtualNetworkGateway1.id)
-| extend peerId = tostring(properties.peer.id)
-| extend connectionId = tostring(id)
+| extend exrGatewayId = tolower(tostring(properties.virtualNetworkGateway1.id))
+| extend peerId = tolower(tostring(properties.peer.id))
+| extend connectionId = tolower(tostring(id))
 | where connectionType == "ExpressRoute") on exrGatewayId
 | where isnull(connectionType)
 | project recommendationId = "ergw-1", name, id, tags, param1 = "twoOrMoreCircuitsConnectedFromDifferentPeeringLocations: false", param2 = "noConnectionsOnGateway: true"
