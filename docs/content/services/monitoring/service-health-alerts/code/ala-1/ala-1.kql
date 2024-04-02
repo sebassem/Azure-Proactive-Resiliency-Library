@@ -5,12 +5,12 @@ resourcecontainers
 | where type == 'microsoft.resources/subscriptions'
 | project subscriptionAlerts=tostring(id),name,tags
 | join kind=leftouter (
-resources
-| where type == 'microsoft.insights/activitylogalerts' and properties.condition contains "ServiceHealth"
-| extend subscriptions = properties.scopes
-| project subscriptions
-| mv-expand subscriptions
-| project subscriptionAlerts = tostring(subscriptions)
+  resources
+  | where type == 'microsoft.insights/activitylogalerts' and properties.condition contains "ServiceHealth"
+  | extend subscriptions = properties.scopes
+  | project subscriptions
+  | mv-expand subscriptions
+  | project subscriptionAlerts = tostring(subscriptions)
 ) on subscriptionAlerts
 | where isempty(subscriptionAlerts1)
 | project-away subscriptionAlerts1
