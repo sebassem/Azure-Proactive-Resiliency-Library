@@ -4,7 +4,7 @@
 resources
 | where type == "microsoft.network/virtualnetworkgateways"
 | where properties.gatewayType == "ExpressRoute"
-| extend gatewayId = tostring(id)
+| extend gatewayId = tolower(tostring(id))
 | extend skuName = properties.sku.name
 | extend maxVMsPerSku = case(skuName == 'Standard', 2000,
                                     skuName == 'ErGw1AZ', 2000,
@@ -22,7 +22,7 @@ resources
 | mv-expand alertProperties.scopes
 | mv-expand alertProperties.criteria.allOf
 | where alertProperties.enabled == true
-| extend gatewayId = tostring(alertProperties_scopes)
+| extend gatewayId = tolower(tostring(alertProperties_scopes))
 | extend criterionType = alertProperties_criteria_allOf.criterionType
 | extend metric = alertProperties_criteria_allOf.metricName
 | extend metricNamespace = alertProperties_criteria_allOf.metricNamespace

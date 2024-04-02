@@ -22,7 +22,7 @@ The below table shows the list of resiliency recommendations for Front Door and 
 | [AFD-4 - Configure logs](#afd-4---configure-logs)                                                                                                                   |    Monitoring     | Medium | Verified |         No          |
 | [AFD-5 - Use end-to-end TLS](#afd-5---use-end-to-end-tls)                                                                                                           |     Security      |  High  | Verified |         No          |
 | [AFD-6 - Use HTTP to HTTPS redirection](#afd-6---use-http-to-https-redirection)                                                                                     | Access & Security |  High  | Verified |         No          |
-| [AFD-7 - Use managed TLS certificates](#afd-7---use-managed-tls-certificates)                                                                                       | Access & Security | Medium | Verified |         No          |
+| [AFD-7 - Use managed TLS certificates](#afd-7---use-managed-tls-certificates)                                                                                       | Access & Security |  High  | Verified |         No          |
 | [AFD-8 - Use latest version for customer-managed certificates](#afd-8---use-latest-version-for-customer-managed-certificates)                                       | Access & Security | Medium | Verified |         No          |
 | [AFD-9 - Use the same domain name on Front Door and your origin](#afd-9---use-the-same-domain-name-on-front-door-and-your-origin)                                   |    Networking     | Medium | Verified |         No          |
 | [AFD-10 - Enable the WAF](#afd-10---enable-the-waf)                                                                                                                 | Access & Security | Medium | Verified |         No          |
@@ -204,7 +204,7 @@ You can configure Front Door to automatically redirect HTTP requests to use the 
 
 **Category: Access & Security**
 
-**Impact: Medium**
+**Impact: High**
 
 **Guidance**
 
