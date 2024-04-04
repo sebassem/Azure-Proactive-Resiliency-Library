@@ -1,5 +1,6 @@
+// Azure Resource Graph Query
 // This Resource Graph query will return all Azure NetApp Files volumes without an availability zone defined.
-resources
-| where type =~ "microsoft.netapp/netappaccounts/capacitypools/volumes"
-| where zones == "[]"
-| project recommendationId = "ANF-3", name, id, tags
+Resources
+| where type =~ "Microsoft.NetApp/netAppAccounts/capacityPools/volumes"
+| where array_length(zones) == 0 or isnull(zones)
+| project recommendationId = "anf-3", name, id, tags
