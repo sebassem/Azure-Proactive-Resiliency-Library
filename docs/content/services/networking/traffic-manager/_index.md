@@ -17,7 +17,6 @@ The presented resiliency recommendations in this guidance include Azure Traffic 
 | [TRAF-1 - Traffic Manager Monitor Status Should be Online](#traf-1---traffic-manager-monitor-status-should-be-online)                                     |   Availability    |  High  | Preview |         Yes          |
 | [TRAF-2 - Traffic manager profiles should have more than one endpoint](#traf-2---traffic-manager-profiles-should-have-more-than-one-endpoint)             |   Availability    |  High  | Preview |         Yes          |
 | [TRAF-3 - Configure at least one endpoint within a another region](#traf-3---configure-at-least-one-endpoint-within-a-another-region)                     | Disaster Recovery | Medium | Preview |         No        |
-| [TRAF-4 - TTL value of user profiles should be in 60 Seconds](#traf-4---ttl-value-of-user-profiles-should-be-in-60-seconds)                               | System Efficiency | Medium | Preview |         Yes          |
 | [TRAF-5 - Ensure endpoint configured to (All World) for geographic profiles](#traf-5---ensure-endpoint-configured-to-all-world-for-geographic-profiles) | Disaster Recovery | Medium | Preview |         No        |
 
 {{< /table >}}
@@ -97,31 +96,6 @@ Profiles should have more than one endpoint to ensure availability if one of the
 {{< collapse title="Show/Hide Query/Script" >}}
 
 {{< code lang="sql" file="code/traf-3/traf-3.kql" >}} {{< /code >}}
-
-{{< /collapse >}}
-
-<br><br>
-
-### TRAF-4 - TTL value of user profiles should be in 60 Seconds
-
-**Category: System Efficiency**
-
-**Impact: Medium**
-
-**Guidance**
-
-Time to Live (TTL) affects how recent of a response a client will get when it makes a request to Azure Traffic Manager. Reducing the TTL value means that the client will be routed to a functioning endpoint faster in the case of a failover. Configure your TTL to 60 seconds to route traffic to a health endpoint as quickly as possible.
-
-**Resources**
-
-- [Configure DNS Time to Live to 60 seconds).](https://learn.microsoft.com/azure/advisor/advisor-reference-performance-recommendations#configure-dns-time-to-live-to-60-seconds)
-- [Traffic Manager profile - ProfileTTL (Configure DNS Time to Live to 60 seconds).](https://aka.ms/Um3xr5)
-
-**Resource Graph Query**
-
-{{< collapse title="Show/Hide Query/Script" >}}
-
-{{< code lang="sql" file="code/traf-4/traf-4.kql" >}} {{< /code >}}
 
 {{< /collapse >}}
 
